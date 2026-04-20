@@ -3,19 +3,20 @@ import Modeler from 'bpmn-js/lib/Modeler'
 import EventEmitter from '@/utils/EventEmitter'
 import modelerStore from '@/store/modeler'
 import EnhancementContextmenu from '@/additional-functions/EnhancementContextmenu'
-
 import type { BaseViewerOptions } from 'bpmn-js/lib/BaseViewer'
 import type { ModulesAndModdles } from '@/components/Designer/modulesAndModdle'
 
-export default async function (
-  designer: Ref<HTMLElement | null>,
-  modelerModules: ModulesAndModdles,
-  emit
-) {
+interface InitModelerParams {
+  designer: Ref<HTMLElement | null>
+  modelerModules: ModulesAndModdles
+  emit: (event: string, ...args: any[]) => void
+}
+
+export default async function ({ designer, modelerModules, emit }: InitModelerParams) {
   const store = modelerStore()
 
   const options: BaseViewerOptions = {
-    container: designer!.value as HTMLElement,
+    container: designer.value as HTMLElement,
     additionalModules: modelerModules[0] || [],
     moddleExtensions: modelerModules[1] || {},
     ...modelerModules[2]
@@ -42,7 +43,7 @@ export default async function (
       emit('update:xml', xml)
       emit('command-stack-changed', event)
     } catch (error) {
-      console.error(error)
+      console.error('Command stack changed error:', error)
     }
   })
 }
