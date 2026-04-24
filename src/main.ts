@@ -4,65 +4,8 @@ import App from './App.js'
 
 import './styles/index.scss'
 
-import {
-  createDiscreteApi,
-  create,
-  NColorPicker,
-  NConfigProvider,
-  NMessageProvider,
-  NDialogProvider,
-  NButton,
-  NButtonGroup,
-  NTag,
-  NCollapse,
-  NCollapseItem,
-  NDataTable,
-  NPopover,
-  NDrawer,
-  NDrawerContent,
-  NModal,
-  NCode,
-  NForm,
-  NFormItem,
-  NInput,
-  NInputNumber,
-  NRadio,
-  NRadioGroup,
-  NCheckbox,
-  NCheckboxGroup,
-  NSelect,
-  NSwitch
-} from 'naive-ui'
-
-const naive = create({
-  components: [
-    NColorPicker,
-    NConfigProvider,
-    NMessageProvider,
-    NDialogProvider,
-    NButton,
-    NButtonGroup,
-    NTag,
-    NCollapse,
-    NCollapseItem,
-    NDataTable,
-    NPopover,
-    NDrawer,
-    NDrawerContent,
-    NModal,
-    NCode,
-    NForm,
-    NFormItem,
-    NInput,
-    NInputNumber,
-    NRadio,
-    NRadioGroup,
-    NCheckbox,
-    NCheckboxGroup,
-    NSelect,
-    NSwitch
-  ]
-})
+import { createDiscreteApi } from 'naive-ui'
+import naive from 'naive-ui'
 
 const { message, notification, dialog, loadingBar } = createDiscreteApi([
   'message',
